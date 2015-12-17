@@ -2,25 +2,26 @@ require recipes-bsp/u-boot/u-boot.inc
 
 DESCRIPTION = "u-boot for UDOO boards."
 LICENSE = "GPLv2+"
-LIC_FILES_CHKSUM = "file://Licenses/README;md5=025bf9f768cbcb1a165dbe1a110babfb"
-COMPATIBLE_MACHINE = "(udooneo|udooquad)"
+LIC_FILES_CHKSUM_udooneo = "file://Licenses/README;md5=c7383a594871c03da76b3707929d2919"
+LIC_FILES_CHKSUM_udooqdl = "file://Licenses/README;md5=0507cd7da8e7ad6d6701926ec9b84c95"
+COMPATIBLE_MACHINE = "(udooneo|udooqdl)"
 
 PROVIDES = "u-boot"
 
-PV = "v2014.07+git${SRCPV}"
+SRCBRANCH_udooneo = "2015.04+fsl_NEO"
+SRCBRANCH_udooqdl = "2015.10+fslc"
 
-SRCREV = "edd0741743932c669461c549ae53320f4313c4cd"
-SRCBRANCH = "master"
+PV_udooqdl = "v${SRCBRANCH}+git${SRCPV}"
+
+SRCREV_udooneo = "d7814685bdb364a4162f5bb4431676631591fc38"
+SRCREV_udooqdl = "68849f96afa56d5a4cfcdd918bafebc552958d3a"
+
+
 SRC_URI = "git://github.com/udooboard/uboot-imx.git;branch=${SRCBRANCH} \
-           file://0001-Fix-builds-with-gcc5.patch \
-           file://0002-Fix-inline-build-issues-with-gcc5.patch \
-           file://udoo-config-unification.patch \
+           file://0001-remove-dts-subfolder.patch \
+           file://uEnv.txt \
 "
 
 S = "${WORKDIR}/git"
-
-do_configure_prepend() {
-    sed -i "s/\(^Active\s*arm.*udoo.*DEFAULT_FDT_FILE=\"\)\(.*\)\(\".*$\)/\1${UBOOT_DEFAULT_DEVICETREE}\3/" boards.cfg
-}
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
