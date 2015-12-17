@@ -8,12 +8,10 @@ DEPENDS += "lzop-native bc-native"
 
 # UDOOboard branch - based on 3.14.28_1.0.0_ga from Freescale git
 
-SRCBRANCH_udooneo = "imx_3.14.28_1.0.0_ga_neo"
-SRCBRANCH_udooquad = "3.14-1.0.x-udoo"
-SRCREV_udooneo = "b15f827aa37a1ca71ca4e3b5c0de1c4da4a3de67"
-SRCREV_udooquad = "56eada2ecc328c451c5d2e7ef1963e60179333a0"
+SRCBRANCH = "3.14-1.0.x-udoo"
+SRCREV = "2a21526f9f5c030fb5c07491474d612dc16ef386"
 LOCALVERSION = "_1.0.0_ga-udooboard"
 
 B = "${S}"
 
-COMPATIBLE_MACHINE = "(udooneo|udooquad)"
+COMPATIBLE_MACHINE = "(udooneo|udooqdl)"
